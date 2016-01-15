@@ -64,7 +64,7 @@ ENV JENKINS_HOME /jenkins
 
 # look for git key in jenkins home
 ADD ssh-config /root/.ssh/config
-ADD known-hosts /root/.ssh/known_hosts
+ADD known_hosts /root/.ssh/known_hosts
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]

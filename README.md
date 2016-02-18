@@ -18,3 +18,17 @@ To start Jenkins from the container's command prompt . . .
 You can configure Jenkins continuous integration jobs at http://127.0.0.1:8080 .  The Jenkins GitHub plugin needs to be installed by you if you use GitHub.
 
 More information on Jenkins state persistence can be found at https://registry.hub.docker.com/u/aespinosa/jenkins/ .
+
+To start in NDR network, run:
+
+    docker run -d --volumes-from j-data \
+      -p 8080:8080 \
+      -v /ndr:/ndr \
+      -v /DOS:/DOS \
+      -v /usr/local/ndr/bin:/usr/local/ndr/bin \
+      -v /datadept:/datadept \
+      -v /etc/localtime:/etc/localtime:ro \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v ~/.docker:/home/jenkins/.docker \
+      -e TZ=America/New_York \
+      -t jenkins
